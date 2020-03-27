@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes');
 
 const app = express();
@@ -7,6 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use(errors());
 
 /* 
 Rotas: o caminho que a aplicação vai ter na url
@@ -39,5 +41,4 @@ Recursos: o que vai utilizar por exemplo uma lista de users
   * Query Builder: table('users').select('*')
   */
 
-app.listen(3333);
-
+module.exports = app;
